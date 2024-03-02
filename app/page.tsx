@@ -173,7 +173,7 @@ export default function Home() {
               alt="CCIS logo"
             />
           </div>
-          <div className="w-96 lg:w-full flex flex-col gap-10 lg:gap-0 lg:flex-row items-center justify-around py-8">
+          <div className="w-full flex flex-col gap-10 lg:gap-0 lg:flex-row items-center justify-around py-8">
             <div className="card w-64 bg-base-100 shadow-xl">
               <figure className="px-10 pt-10">
                 <Image

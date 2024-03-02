@@ -9,8 +9,8 @@ export default function Navbar() {
 
   return (
     <div className="navbar bg-base-100 shadow fixed z-[999]">
-      <div className="flex flex-row justify-between mx-auto lg:max-w-7xl px-6 w-full">
-        <div className="flex-1">
+      <div className="flex flex-row justify-between mx-auto lg:max-w-7xl md:px-6 lg:px-6 w-full">
+        <div className="">
           <Link
             href={'/'}
             className={`btn btn-ghost text-xl  ${
