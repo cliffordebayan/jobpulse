@@ -202,8 +202,8 @@ export default function CompanyProfiles({
               </p>
             </div>
           </div>
-          <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full pt-10 flex flex-col items-center">
-            <div className="card w-96 lg:w-full bg-base-100 shadow-sm ">
+          <div className="mx-auto lg:max-w-7xl px-2 md:px-8 lg:px-8 w-full pt-10 flex flex-col items-center">
+            <div className="card rounded-md w-full lg:w-full bg-base-100 shadow-sm ">
               <div className="card-body items-center text-center">
                 <div className="flex flex-row w-full items-center">
                   <div className="rounded-md mr-6 w-[70px] h-[70px] border-base-300 border-2 flex justify-center items-center">
@@ -219,11 +219,11 @@ export default function CompanyProfiles({
                     {companyData.name}
                   </h2>
                 </div>
-                <div className="w-full flex flex-col  gap-5 lg:gap-0 lg:flex-row text-left pt-5">
+                <div className="w-full flex flex-col gap-5 lg:gap-0 lg:flex-row text-left pt-5">
                   <div className="flex-1 flex flex-col gap-2">
                     <h2 className="font-bold text-sm">COMPANY OVERVIEW</h2>
                     <div className="text-justify pr-3">
-                      <h3 className="font-bold">Website</h3>
+                      <h3 className="font-bold truncate">Website</h3>
                       <a>{companyData.website}</a>
                       <h3 className="font-bold">Industry</h3>
                       <p>{companyData.industry}</p>
@@ -243,10 +243,10 @@ export default function CompanyProfiles({
               </div>
             </div>
           </div>
-          <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full h-fit mt-6 flex flex-col items-center gap-5 lg:gap-0 lg:flex-row lg:justify-between">
-            <div className="card rounded-md w-96 lg:w-[600px] bg-base-100 shadow-sm">
+          <div className="mx-auto lg:max-w-7xl px-2 md:px-8 lg:px-8  h-fit mt-6 flex flex-col items-center gap-5 lg:gap-0 lg:flex-row lg:justify-between">
+            <div className="card rounded-md w-full lg:w-[600px] bg-base-100 shadow-sm">
               <div className="card-body flex flex-column justify-center">
-                <h2 className="card-title text-xl flex justify-center">
+                <h2 className="card-title text-sm md:text-xl lg:text-xl flex justify-center">
                   OVERALL COMPANY SENTIMENT
                 </h2>
                 <div className="w-full h-96 py-6 flex justify-center">
@@ -259,19 +259,19 @@ export default function CompanyProfiles({
               </div>
             </div>
 
-            <div className="card rounded-md w-96 lg:w-[600px] bg-base-100 shadow-sm">
+            <div className="card rounded-md w-full lg:w-[600px] bg-base-100 shadow-sm">
               <div className="card-body flex flex-column justify-center">
-                <h2 className="card-title text-xl flex justify-center">
+                <h2 className="card-title text-sm md:text-xl lg:text-xl flex justify-center">
                   SENTIMENT BY PLATFORMS
                 </h2>
-                <div className="w-full lg:h-96 py-6 flex justify-center">
+                <div className="w-full h-96 py-6 flex justify-center">
                   <Bar options={barOptions} data={companyData.barData} />
                 </div>
               </div>
             </div>
           </div>
-          <div className="mx-auto max-w-96 gap-6 lg:gap-0 lg:max-w-7xl px-8 pb-28 w-full h-fit mt-6 flex flex-col items-center lg:items-stretch lg:flex-row lg:justify-between">
-            <div className="card rounded-md w-96 lg:w-[600px] h-auto bg-base-100 shadow-sm">
+          <div className="mx-auto gap-6 lg:gap-0 lg:max-w-7xl px-2 md:px-8 lg:px-8 pb-28 w-full h-fit mt-6 flex flex-col items-center lg:items-stretch lg:flex-row lg:justify-between">
+            <div className="card rounded-md w-full lg:w-[600px] h-auto bg-base-100 shadow-sm">
               <div className="card-body flex flex-column justify-center h-[1269px]">
                 <StyledEngineProvider injectFirst>
                   <DataTable
@@ -284,10 +284,10 @@ export default function CompanyProfiles({
                 </StyledEngineProvider>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-6">
-              <div className="card rounded-md w-96 lg:w-[600px] bg-base-100 shadow-sm">
+            <div className="flex flex-col w-full items-center lg:items-end lg:gap-6">
+              <div className="card rounded-md w-full lg:w-[600px] bg-base-100 shadow-sm">
                 <div className="card-body flex flex-column justify-center">
-                  <h2 className="card-title text-xl flex justify-center">
+                  <h2 className="card-title text-sm md:text-xl lg:text-xl flex justify-center">
                     POSITIVE WORD CLOUD
                   </h2>
                   <div className="w-full py-6 h-96 flex justify-center">
@@ -298,9 +298,9 @@ export default function CompanyProfiles({
                   </div>
                 </div>
               </div>
-              <div className="card rounded-md w-96 lg:w-[600px] bg-base-100 shadow-sm">
+              <div className="card rounded-md w-full lg:w-[600px] bg-base-100 shadow-sm">
                 <div className="card-body flex flex-column justify-center">
-                  <h2 className="card-title text-xl flex justify-center">
+                  <h2 className="card-title text-sm md:text-xl lg:text-xl flex justify-center">
                     NEUTRAL WORD CLOUD
                   </h2>
                   <div className="w-full py-6 h-96 flex justify-center">
@@ -311,9 +311,9 @@ export default function CompanyProfiles({
                   </div>
                 </div>
               </div>
-              <div className="card rounded-md w-96 lg:w-[600px] bg-base-100 shadow-sm">
+              <div className="card rounded-md w-full lg:w-[600px] bg-base-100 shadow-sm">
                 <div className="card-body flex flex-column justify-center">
-                  <h2 className="card-title text-xl flex justify-center">
+                  <h2 className="card-title text-sm md:text-xl lg:text-xl flex justify-center">
                     NEGATIVE WORD CLOUD
                   </h2>
                   <div className="w-full py-6 h-96 flex justify-center">
