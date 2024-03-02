@@ -8,16 +8,17 @@ export default function Home() {
         <div className="hero-content flex-col max-w-96 px-8 w-full z-50 lg:flex-row-reverse mx-auto lg:max-w-7xl ">
           <Image
             src="/banner.jpg"
-            width={420}
+            width={380}
             height={0}
             sizes="100vh"
             alt="Picture of job hunting"
+            className='h-48 w-auto md:w-96 md:h-full lg:w-96 lg:h-full'
           />
           <div>
-            <h1 className="text-xl lg:text-6xl font-bold">
+            <h1 className="text-lg md:text-xl lg:text-6xl font-bold">
               Finding Reputable Companies is now much easier.
             </h1>
-            <p className="text-xl pt-6 lg:text-xl pb-10">
+            <p className="text-md md:text-xl pt-6 lg:text-xl pb-10">
               JobPulse is an interesting platform that give you employee
               sentiments of companies from various job sites and social media
               platform for informed job hunting.
@@ -83,8 +84,8 @@ export default function Home() {
             alt="Picture of data analytics"
           />
           <div>
-            <h1 className="text-xl lg:text-5xl font-bold">WHAT IS JOBPULSE?</h1>
-            <p className="py-6 text-xl text-justify">
+            <h1 className="text-lg md:text-xl lg:text-5xl font-bold">WHAT IS JOBPULSE?</h1>
+            <p className="text-md md:text-xl lg:text-xl py-6 text-justify">
               JobPulse revolutionizes the job hunting experience by analyzing
               data from social media and job sites in the Philippines,
               uncovering employee sentiments in both English and Tagalog.
@@ -131,8 +132,8 @@ export default function Home() {
             alt="Picture of job hunting"
           />
           <div>
-            <h1 className="text-xl lg:text-5xl font-bold">ABOUT US</h1>
-            <p className="py-6 text-xl text-justify">
+            <h1 className="text-lg md:text-xl lg:text-5xl font-bold">ABOUT US</h1>
+            <p className="text-md md:text-xl lg:text-xl py-6 text-justify">
               At JobPulse, we are dedicated to transforming the job hunting
               landscape. Our mission is to empower individuals with valuable
               insights into company culture and employee sentiment. Through
@@ -157,8 +158,8 @@ export default function Home() {
               alt="MMSU logo"
             />
             <div className="px-4 text-center">
-              <h1 className="text-xl lg:text-5xl font-bold">OUR TEAM</h1>
-              <p className="py-6 text-xl">
+              <h1 className="text-lg md:text-xl lg:text-5xl font-bold">OUR TEAM</h1>
+              <p className="py-6 text-md md:text-xl lg:text-xl">
                 Our team consists of four students studying for a
                 Bachelor&apos;s degree in Computer Science at Mariano Marcos
                 State University in the City of Batac, Ilocos Norte.

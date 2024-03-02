@@ -78,7 +78,7 @@ export const CompanyReviews = {
     },
     {
       id: 12,
-      review: 'Nothing',
+      review: 'The company offerings are sufficient for basic needs',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
@@ -105,7 +105,7 @@ export const CompanyReviews = {
     },
     {
       id: 16,
-      review: 'Nothing',
+      review: "My experience with the company was good at the same time it's disappointing",
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
@@ -363,7 +363,7 @@ export const CompanyReviews = {
     },
     {
       id: 53,
-      review: 'Nothing',
+      review: 'The company performance was adequate.',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
@@ -593,7 +593,7 @@ export const CompanyReviews = {
     },
     {
       id: 86,
-      review: 'Nothing',
+      review: 'My experience with the company was neiter good or bad',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
@@ -844,7 +844,7 @@ export const CompanyReviews = {
     },
     {
       id: 122,
-      review: 'Nothing',
+      review: 'I do not recommend this company but the other department it is good.',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
@@ -5369,7 +5369,7 @@ export const CompanyReviews = {
     },
     {
       id: 165,
-      review: 'Nothing',
+      review: 'The company met my basic expectations not to good or bad',
       sentiment: 'Neutral',
       platform: 'Facebook',
     },
@@ -18811,7 +18811,7 @@ export const CompanyReviews = {
     },
     {
       id: 18,
-      review: 'Nothing',
+      review: 'I have no significant complaints about the company.',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
@@ -20126,7 +20126,7 @@ export const CompanyReviews = {
     },
     {
       id: 206,
-      review: 'Nothing',
+      review: 'I got nothing to say about the company',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
@@ -20651,13 +20651,13 @@ export const CompanyReviews = {
     {
       id: 281,
       review:
-        'Worked as a system admin in IBM india Pvt.ltd in Benguluru india for the IBM multiple clients in a pool invironment .. ',
+        'Worked as a system admin in IBM Philippines for the IBM multiple clients in a pool invironment. ',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
     {
       id: 282,
-      review: 'Nothing',
+      review: 'My encounter with the company was unremarkable',
       sentiment: 'Neutral',
       platform: 'Indeed',
     },
