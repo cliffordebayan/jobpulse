@@ -284,7 +284,7 @@ export default function CompanyProfiles({
                 </StyledEngineProvider>
               </div>
             </div>
-            <div className="flex flex-col w-full items-center lg:items-end lg:gap-6">
+            <div className="flex flex-col w-full items-center lg:items-end gap-6">
               <div className="card rounded-md w-full lg:w-[600px] bg-base-100 shadow-sm">
                 <div className="card-body flex flex-column justify-center">
                   <h2 className="card-title text-sm md:text-xl lg:text-xl flex justify-center">
