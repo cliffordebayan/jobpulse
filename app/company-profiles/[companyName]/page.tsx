@@ -1,6 +1,6 @@
-'use client';
-import React from 'react';
-import Image from 'next/image';
+"use client";
+import React from "react";
+import Image from "next/image";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -10,17 +10,17 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
-import { Pie, Bar } from 'react-chartjs-2';
-import WordCloudChart from '@/app/components/WordCloudChart';
-import { StyledEngineProvider } from '@mui/material/styles';
-import DataTable from '../../components/datatable';
-import { useEffect, useState } from 'react';
-import { getCompanyData } from '../../database/company-data';
-import { CompanyReviews } from '../../database/company-reviews';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { values } from 'd3';
+import { Pie, Bar } from "react-chartjs-2";
+import WordCloudChart from "@/app/components/WordCloudChart";
+import { StyledEngineProvider } from "@mui/material/styles";
+import DataTable from "../../components/datatable";
+import { useEffect, useState } from "react";
+import { getCompanyData } from "../../database/company-data";
+import { CompanyReviews } from "../../database/company-reviews";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { values } from "d3";
 
 ChartJS.register(
   CategoryScale,
@@ -77,6 +77,7 @@ interface Review {
   review: string;
   sentiment: string;
   platform: string;
+  date: string;
 }
 
 interface CompanyReviews {
@@ -91,6 +92,13 @@ export default function CompanyProfiles({
   const [companyData, setCompanyData] = useState<CompanyData | null>(null);
 
   const [loading, setLoading] = useState(true);
+  const [companyReviewsData, setCompanyReviewsData] =
+    useState<CompanyReviews | null>(null);
+  const [filterType, setFilterType] = useState<string | null>("");
+  const [sentimentTitle, setSentimentTitle] = useState<string>(
+    "OVERALL COMPANY SENTIMENT"
+  );
+
   useEffect(() => {
     // Fetch data based on the companyName parameter
     const fetchData = async () => {
@@ -98,7 +106,7 @@ export default function CompanyProfiles({
         const data = getCompanyData(params.companyName);
         setCompanyData(data);
       } catch (error) {
-        console.error('Error fetching company data:', error);
+        console.error("Error fetching company data:", error);
       } finally {
         setLoading(false);
       }
@@ -106,9 +114,6 @@ export default function CompanyProfiles({
 
     fetchData();
   }, [params.companyName]);
-
-  const [companyReviewsData, setCompanyReviewsData] =
-    useState<CompanyReviews | null>(null);
 
   useEffect(() => {
     // Fetch data based on the companyName parameter
@@ -119,7 +124,7 @@ export default function CompanyProfiles({
           reviews && reviews[params.companyName] ? reviews : null
         );
       } catch (error) {
-        console.error('Error fetching company reviews data:', error);
+        console.error("Error fetching company reviews data:", error);
       } finally {
         setLoading(false);
       }
@@ -128,14 +133,43 @@ export default function CompanyProfiles({
     fetchData();
   }, [params.companyName]);
 
+  const handleFilterClick = (type: string, title: string) => {
+    setFilterType(type);
+    setSentimentTitle(title);
+  };
+
+  const filterReviews = (reviews: Review[]) => {
+    if (!filterType) return reviews;
+    const filterWords = filterType.toLowerCase().split(" ");
+    return reviews.filter((review) =>
+      filterWords.some((word) => review.review.toLowerCase().includes(word))
+    );
+  };
+
+  const calculateSentimentCounts = (reviews: Review[]): number[] => {
+    const sentimentsCount: { [sentiment: string]: number } = {
+      Positive: 0,
+      Neutral: 0,
+      Negative: 0,
+    };
+    reviews.forEach((review) => {
+      sentimentsCount[review.sentiment]++;
+    });
+    return [
+      sentimentsCount["Positive"],
+      sentimentsCount["Neutral"],
+      sentimentsCount["Negative"],
+    ];
+  };
+
   const pieOptions = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'right' as const,
+        position: "right" as const,
       },
       datalabels: {
-        color: '#fff',
+        color: "#fff",
         formatter: (value: number, context: any) => {
           return (
             Math.round(
@@ -145,17 +179,35 @@ export default function CompanyProfiles({
                   0
                 )) *
                 100
-            ) + '%'
+            ) + "%"
           );
         },
       },
     },
   };
 
+  const pieData = {
+    datasets: [
+      {
+        labels: ["Positive", "Neutral", "Negative"],
+        data: calculateSentimentCounts(
+          filterReviews(
+            companyReviewsData
+              ? companyReviewsData[params.companyName] || []
+              : []
+          )
+        ),
+        backgroundColor: ["#4FCB5B", "#FFB32E", "#F3565B"],
+        borderColor: ["#4FCB5B", "#FFB32E", "#F3565B"],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   const barOptions = {
     plugins: {
       legend: {
-        position: 'bottom' as const,
+        position: "bottom" as const,
       },
     },
     responsive: true,
@@ -188,8 +240,8 @@ export default function CompanyProfiles({
             style={{
               backgroundImage:
                 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/buildings.jpeg")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'top -550px left',
+              backgroundSize: "cover",
+              backgroundPosition: "top -550px left",
             }}
           >
             <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full pt-28">
@@ -235,10 +287,68 @@ export default function CompanyProfiles({
                   </div>
                   <div className="flex-1 flex flex-col gap-2">
                     <h2 className="font-bold text-sm">COMPANY DETAILS</h2>
-                    <div className="text-justify pr-3 overflow-auto h-[300px]">
+                    <div className="text-justify pr-3 ">
                       {companyData.details}
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mx-auto lg:max-w-7xl px-2 md:px-8 lg:px-8 w-full mt-6 flex flex-col items-center">
+            <div className="card rounded-md w-full lg:w-full bg-base-100 shadow-sm ">
+              <div className="card-body">
+                <div className="card-actions justify-start">
+                  <button
+                    className={`btn btn-outline ${
+                      filterType === "" ? "btn-active " : ""
+                    }btn-primary`}
+                    onClick={() =>
+                      handleFilterClick("", "OVERALL COMPANY SENTIMENT")
+                    }
+                  >
+                    All
+                  </button>
+                  <button
+                    className={`btn btn-outline ${
+                      filterType === "Environment" ? "btn-active " : ""
+                    }btn-primary`}
+                    onClick={() =>
+                      handleFilterClick(
+                        "Environment",
+                        "WORK ENVIRONMENT SENTIMENT"
+                      )
+                    }
+                  >
+                    Work Environment
+                  </button>
+                  <button
+                    className={`btn btn-outline ${
+                      filterType === "Benefits" ? "btn-active " : ""
+                    }btn-primary`}
+                    onClick={() =>
+                      handleFilterClick(
+                        "Benefits",
+                        "EMPLOYEE BENIFIT SENTIMENT"
+                      )
+                    }
+                  >
+                    Employee Benefits
+                  </button>
+                  <button
+                    className={`btn btn-outline ${
+                      filterType === "Salary Compensation" ? "btn-active " : ""
+                    }btn-primary`}
+                    onClick={() =>
+                      handleFilterClick(
+                        "Salary Compensation",
+                        "SALARY AND COMPENSATION SENTIMENT"
+                      )
+                    }
+                  >
+                    Salary and Compensation
+                  </button>
                 </div>
               </div>
             </div>
@@ -247,12 +357,12 @@ export default function CompanyProfiles({
             <div className="card rounded-md w-full lg:w-[600px] bg-base-100 shadow-sm">
               <div className="card-body flex flex-column justify-center">
                 <h2 className="card-title text-sm md:text-xl lg:text-xl flex justify-center">
-                  OVERALL COMPANY SENTIMENT
+                  {sentimentTitle}
                 </h2>
                 <div className="w-full h-96 py-6 flex justify-center">
                   <Pie
                     options={pieOptions}
-                    data={companyData.pieData}
+                    data={pieData}
                     plugins={[ChartDataLabels] as never}
                   />
                 </div>
@@ -277,7 +387,9 @@ export default function CompanyProfiles({
                   <DataTable
                     data={
                       companyReviewsData
-                        ? companyReviewsData[params.companyName] || []
+                        ? filterReviews(
+                            companyReviewsData[params.companyName]
+                          ) || []
                         : []
                     }
                   />

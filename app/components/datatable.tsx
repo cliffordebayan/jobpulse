@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import React, { useState } from "react";
+import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
 interface Row {
   id: number;
@@ -12,18 +12,19 @@ interface DataTableProps {
 }
 
 export default function DataTable({ data }: DataTableProps) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const columns: GridColDef[] = [
-    { field: 'id', headerName: '#', width: 80, headerAlign: 'center' },
-    { field: 'review', headerName: 'Reviews', width: 300 },
+    { field: "id", headerName: "#", width: 80, headerAlign: "center" },
+    { field: "review", headerName: "Reviews", width: 200 },
+    { field: "date", headerName: "Date", width: 100 },
     {
-      field: 'sentiment',
-      headerName: 'Sentiments',
+      field: "sentiment",
+      headerName: "Sentiments",
       width: 134,
       renderCell: (params) => (
         <div
-          style={{ color: 'white' }}
+          style={{ color: "white" }}
           className={getSentimentBadge(params.value as string)}
         >
           {params.value}
@@ -34,14 +35,14 @@ export default function DataTable({ data }: DataTableProps) {
 
   const getSentimentBadge = (sentiment: string) => {
     switch (sentiment) {
-      case 'Positive':
-        return 'badge badge-success px-5 py-3';
-      case 'Negative':
-        return 'badge badge-error px-5 py-3';
-      case 'Neutral':
-        return 'badge badge-warning px-5 py-3';
+      case "Positive":
+        return "badge badge-success px-5 py-3";
+      case "Negative":
+        return "badge badge-error px-5 py-3";
+      case "Neutral":
+        return "badge badge-warning px-5 py-3";
       default:
-        return ' ';
+        return " ";
     }
   };
 
@@ -76,7 +77,7 @@ export default function DataTable({ data }: DataTableProps) {
 
       <DataGrid
         rowHeight={125}
-        getRowHeight={() => 'auto'}
+        getRowHeight={() => "auto"}
         checkboxSelection={false}
         disableRowSelectionOnClick
         rows={filteredRows}
@@ -88,29 +89,29 @@ export default function DataTable({ data }: DataTableProps) {
         }}
         pageSizeOptions={[10]}
         sx={{
-          '.MuiDataGrid-columnHeaderTitle': {
-            color: 'black',
-            fontWeight: 'bold',
-            fontSize: '1rem',
+          ".MuiDataGrid-columnHeaderTitle": {
+            color: "black",
+            fontWeight: "bold",
+            fontSize: "1rem",
           },
 
-          '.MuiDataGrid-cellContent': {
-            fontSize: '1.2rem',
-            textAlign: 'justify',
-            display: 'flex',
-            alignItems: 'center',
-            paddingY: '8px',
-            width: '100%',
-            minHeight: '125px',
-            textOverflow: 'ellipsis !important',
-            textWrap: 'wrap',
+          ".MuiDataGrid-cellContent": {
+            fontSize: "1rem",
+            textAlign: "justify",
+            display: "flex",
+            alignItems: "center",
+            paddingY: "8px",
+            width: "100%",
+            minHeight: "125px",
+            textOverflow: "ellipsis !important",
+            textWrap: "wrap",
           },
           '[aria-colindex="1"] > [role="presentation"]': {
-            fontWeight: 'bold',
-            fontSize: '1.2rem',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            fontWeight: "bold",
+            fontSize: "1.2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           },
         }}
       />

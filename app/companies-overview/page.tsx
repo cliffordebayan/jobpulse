@@ -1,7 +1,7 @@
-'use client';
-import React from 'react';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+"use client";
+import React from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -11,11 +11,11 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
-import { Pie, Bar } from 'react-chartjs-2';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import Link from 'next/link';
+import { Pie, Bar } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import Link from "next/link";
 
 ChartJS.register(
   CategoryScale,
@@ -27,7 +27,7 @@ ChartJS.register(
   Legend
 );
 
-import { companiesOverview } from '../database/company-data';
+import { companiesOverview } from "../database/company-data";
 
 interface Company {
   name: string;
@@ -78,7 +78,7 @@ export default function CompaniesOverview() {
         const data: any = companiesOverview;
         setCompanyData(data);
       } catch (error) {
-        console.error('Error fetching company data:', error);
+        console.error("Error fetching company data:", error);
       } finally {
         setLoading(false);
       }
@@ -109,10 +109,10 @@ export default function CompaniesOverview() {
     responsive: true,
     plugins: {
       legend: {
-        position: 'right' as const,
+        position: "right" as const,
       },
       datalabels: {
-        color: '#fff',
+        color: "#fff",
         formatter: (value: number, context: any) => {
           return (
             Math.round(
@@ -122,7 +122,7 @@ export default function CompaniesOverview() {
                   0
                 )) *
                 100
-            ) + '%'
+            ) + "%"
           );
         },
       },
@@ -130,10 +130,10 @@ export default function CompaniesOverview() {
   };
 
   const barOptions = {
-    indexAxis: 'y' as const,
+    indexAxis: "y" as const,
     plugins: {
       legend: {
-        position: 'bottom' as const,
+        position: "bottom" as const,
       },
     },
     responsive: true,
@@ -156,8 +156,8 @@ export default function CompaniesOverview() {
             style={{
               backgroundImage:
                 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/building.jpg")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'bottom -220px right',
+              backgroundSize: "cover",
+              backgroundPosition: "bottom -220px right",
             }}
           >
             <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full pt-28">
@@ -168,6 +168,16 @@ export default function CompaniesOverview() {
                 ANALYZED COMPANIES SENTIMENT <br />
                 FOR INFORMED JOB HUNTING
               </p>
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full mt-10 flex flex-col items-center gap-5 lg:gap-0 lg:flex-col lg:justify-center">
+            <div className="card rounded-md w-72 lg:w-full  bg-base-100 shadow-sm">
+              <div className="card-body flex flex-col items-center">
+                <h2 className="card-title text-xl">
+                  Data Collected as of Jan - May 2024
+                </h2>
+              </div>
             </div>
           </div>
 
@@ -259,21 +269,21 @@ export default function CompaniesOverview() {
             </div>
           </div>
 
-          <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full mt-6 flex flex-col items-center gap-5 lg:gap-0 lg:flex-row lg:justify-between">
-            <div className="card rounded-md w-96 lg:w-[600px] bg-base-100 shadow-sm">
-              <div className="card-body flex flex-column justify-center">
+          <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full mt-6 flex flex-col items-center lg:items-start gap-5 lg:gap-0 lg:flex-row lg:justify-between">
+            <div className="card rounded-md w-96 lg:w-[600px] h-full bg-base-100 shadow-sm">
+              <div className="card-body flex flex-column ">
                 <h2 className="card-title text-xl flex justify-center">
-                  TOP 5 RECOMMENDED COMPANIES
+                  TOP RECOMMENDED COMPANIES
                 </h2>
-                <div className="w-full h-96 py-6 flex justify-center">
-                  <table className="table">
+                <div className="w-full py-6 flex justify-center">
+                  <table className="table sm:table-xs md:table-xs">
                     <tbody className="w-full h-full flex flex-col gap-4">
                       {Object.entries(companyData.recommend).map(
                         ([key, company], index) => (
                           <tr key={key} className="border-b-slate-300 flex-1">
                             <Link
                               href={`/company-profiles/${company.name.toLowerCase()}`}
-                              className={'w-full h-full flex flex-row'}
+                              className={"w-full h-full flex flex-row"}
                             >
                               <th className="text-xl">{index + 1}</th>
                               <td className="p-0 w-14 flex flex-row items-center justify-center">
@@ -300,12 +310,12 @@ export default function CompaniesOverview() {
                 </div>
               </div>
             </div>
-            <div className="card rounded-md w-96 lg:w-[600px] bg-base-100 shadow-sm">
+            <div className="card rounded-md w-96 h-full lg:w-[600px] bg-base-100 shadow-sm">
               <div className="card-body flex flex-column justify-center">
                 <h2 className="card-title text-xl flex justify-center">
                   OVERALL COMPANIES SENTIMENT
                 </h2>
-                <div className="w-full h-96 py-6 flex justify-center">
+                <div className="w-full h-full py-6 flex justify-center">
                   <Pie
                     options={pieOptions}
                     data={companyData.pieData}

@@ -29,6 +29,31 @@ export const companiesOverview = {
       image: "/company-img/oracle.png",
       percentage: "61.00%",
     },
+    "fis global": {
+      name: "FIS Global",
+      image: "/company-img/fis-global.png",
+      percentage: "58.00%",
+    },
+    cognizant: {
+      name: "Cognizant",
+      image: "/company-img/cognizant.png",
+      percentage: "57.00%",
+    },
+    genpact: {
+      name: "Genpact",
+      image: "/company-img/genpact.png",
+      percentage: "56.00%",
+    },
+    teleperformance: {
+      name: "Teleperformance",
+      image: "/company-img/teleperformance.png",
+      percentage: "55.00%",
+    },
+    Alorica: {
+      name: "Alorica",
+      image: "/company-img/alorica.png",
+      percentage: "54.00%",
+    },
   },
   pieData: {
     labels: ["Positive", "Neutral", "Negative"],
