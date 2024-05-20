@@ -18,11 +18,13 @@
     "chartjs-chart-wordcloud": "^4.3.2",
     "chartjs-plugin-datalabels": "^2.2.0",
     "d3": "^7.8.5",
+    "natural": "^7.0.5",
     "next": "14.1.0",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "tf-idf": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

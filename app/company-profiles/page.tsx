@@ -1,22 +1,32 @@
-'use client';
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function CompanyProfiles() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const companies = [
-    { name: 'Accenture', imageSrc: '/company-img/accenture.png' },
-    { name: 'IBM', imageSrc: '/company-img/ibm.png' },
-    { name: 'Alorica', imageSrc: '/company-img/alorica.png' },
-    { name: 'Oracle', imageSrc: '/company-img/oracle.png' },
-    { name: 'Teleperformance', imageSrc: '/company-img/teleperformance.png' },
-    { name: 'iQor', imageSrc: '/company-img/iqor.png' },
-    { name: 'Concentrix', imageSrc: '/company-img/concentrix.png' },
-    { name: 'Genpact', imageSrc: '/company-img/genpact.png' },
-    { name: 'Cognizant', imageSrc: '/company-img/cognizant.png' },
-    { name: 'FIS Global', imageSrc: '/company-img/fis-global.png' },
+    { name: "Accenture", imageSrc: "/company-img/accenture.png" },
+    { name: "IBM", imageSrc: "/company-img/ibm.png" },
+    { name: "Alorica", imageSrc: "/company-img/alorica.png" },
+    { name: "Oracle", imageSrc: "/company-img/oracle.png" },
+    { name: "Teleperformance", imageSrc: "/company-img/teleperformance.png" },
+    { name: "iQor", imageSrc: "/company-img/iqor.png" },
+    { name: "Concentrix", imageSrc: "/company-img/concentrix.png" },
+    { name: "Genpact", imageSrc: "/company-img/genpact.png" },
+    { name: "Cognizant", imageSrc: "/company-img/cognizant.png" },
+    { name: "FIS Global", imageSrc: "/company-img/fis-global.png" },
+    { name: "PLDT", imageSrc: "/company-img/pldt.png" },
+    { name: "UBISOFT", imageSrc: "/company-img/ubisoft.jpg" },
+    { name: "UBER", imageSrc: "/company-img/uber.png" },
+    { name: "Converge", imageSrc: "/company-img/converge.jpg" },
+    { name: "Huawei", imageSrc: "/company-img/huawei.jpg" },
+    { name: "Tata Consultancy Services", imageSrc: "/company-img/tata.jpg" },
+    { name: "EXL Services", imageSrc: "/company-img/exl.jpg" },
+    { name: "DXC Technology", imageSrc: "/company-img/dxc.png" },
+    { name: "Wipro", imageSrc: "/company-img/wipro.jpg" },
+    { name: "Everise", imageSrc: "/company-img/everise.jpg" },
   ];
 
   const filteredCompanies = companies.filter((company) =>
@@ -30,8 +40,8 @@ export default function CompanyProfiles() {
         style={{
           backgroundImage:
             'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/building.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'bottom -220px right',
+          backgroundSize: "cover",
+          backgroundPosition: "bottom -220px right",
         }}
       >
         <div className="mx-auto max-w-96 lg:max-w-7xl px-8 w-full pt-28">
